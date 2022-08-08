@@ -1,0 +1,45 @@
+
+function checkTime() {
+
+    var currentTime = moment().hour()
+
+    $("#currentDay").text(moment().format('MMMM DD, YYYY, h:mm:ss a')); // Display the date and time in the header
+
+    $(".time-block").each(function () {
+        var hour = parseInt($(this).attr("id"))
+
+        if (hour < currentTime) {
+            $(this).addClass("past");
+        } else if (hour === currentTime) {
+            $(this).addClass("present");
+        } else {
+            $(this).addClass("future");
+        }
+    })
+}
+checkTime();
+
+setInterval(checkTime, 1000); //ticking seconds
+
+
+
+//Save data in local storage
+$(".saveBtn").on("click", function () {
+    
+    var textarea = $(this).siblings(".description").val();
+
+    var time = $(this).siblings(".description").attr("input-time")
+    console.log($(this).siblings(".description").attr("input-time"))
+
+    localStorage.setItem(time, textarea);
+});
+
+$("#9 .description").val(localStorage.getItem("9"));
+$("#10 .description").val(localStorage.getItem("10"));
+$("#11 .description").val(localStorage.getItem("11"));
+$("#12 .description").val(localStorage.getItem("12"));
+$("#13 .description").val(localStorage.getItem("13"));
+$("#14 .description").val(localStorage.getItem("14"));
+$("#15 .description").val(localStorage.getItem("15"));
+$("#16 .description").val(localStorage.getItem("16"));
+$("#17 .description").val(localStorage.getItem("17"));
