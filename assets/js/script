@@ -9,10 +9,16 @@ function checkTime() {
         var hour = parseInt($(this).attr("id"))
 
         if (hour < currentTime) {
+            $(this).removeClass("future"); //added this* code so that when the hours change, the colors that represent those hours also change automatically
+            $(this).removeClass("present"); //this*
             $(this).addClass("past");
         } else if (hour === currentTime) {
+            $(this).removeClass("past"); //this*
+            $(this).removeClass("future"); //this*
             $(this).addClass("present");
         } else {
+            $(this).removeClass("present"); //this*
+            $(this).removeClass("past"); // and this* ...otherwise, the colors don't change untill you hit refresh
             $(this).addClass("future");
         }
     })
